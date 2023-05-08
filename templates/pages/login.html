@@ -1,0 +1,36 @@
+{% extends 'parts/base.html' %}
+{% block content %}
+
+<div class="d-flex flex-column w-100 justify-content-center align-items-center">
+<div class="col-md-7 ">
+<div  class="content-wrapper">
+  <div class="content">
+    <div class="container-fluid">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <div class="d-flex justify-content-between">
+            <h1 class="card-title">تسجيل الدخول</h1>                    
+          </div>
+        </div>
+        <div class="card-body"> 
+        {%if error_msg%}
+        <div class="alert alert-danger" role="alert">
+          <p>{{error_msg}}</p></div>
+        {%endif%}
+                    <form method="POST" novalidation>
+                        {% csrf_token %}
+                        {% include 'pages/form.html' %}
+                     <button class="btn btn-block rounded-0 btn-primary">
+                                        الدخول </button>
+                   </form>
+           </div>
+            <div class="card-footer text-muted text-center">
+            إنشاء حساب   <a href="{% url 'donneur' %}">تسجيل الدخول</a> 
+            </div>
+         </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+{% endblock content %} 

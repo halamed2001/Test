@@ -1,0 +1,31 @@
+{% extends 'parts/base.html' %}
+{% block content %}
+
+<div  class="content-wrapper">
+<div class="content">
+<div class="container-fluid">
+<div class="d-flex flex-column w-100 justify-content-center align-items-center">
+<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+    <div class="card   shadow">
+        <div class="card-header">
+            <h4 class="card-title"><b> احجز موعد</b></h4>
+        </div> 
+        <div class="card-body">
+            
+            {%if form.is_valid %}
+            <div class="alert alert-success" role="alert">
+            <p>{{msg}}</p></div>
+            {%endif%} 
+<form action="" method="POst">
+    {% csrf_token %}
+    {% include 'pages/form.html' %}
+<button class="btn btn-success"> احجز الان</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

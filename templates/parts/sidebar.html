@@ -1,0 +1,99 @@
+{% load static %}
+<aside style="position: fixed;" class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="{% url 'home' %}" class="brand-link">
+      <span class="brand-text font-weight-light">إمد꒦د</span>
+      <img src="{% static 'img/logo.png' %}" height="30">
+    </a>
+    
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+        </div>
+        <div class="info">
+          <a href="https://www.snapchat.com/add/hala_med22?share_id=2RMKAKSdQIE&locale=ar-AA" class="d-block">Hala Med</a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+          <li class="nav-item">
+            <a href="{% url 'donneur' %}" class="nav-link">
+              <i class="nav-icon fas fa-plus"></i>
+              <p>
+                متبرع جديد
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{% url 'contact' %}" class="nav-link">
+              <i class="nav-icon fas fa-comments"></i>
+              <p>
+                راسلنا
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{% url 'about' %}" class="nav-link">
+              <i class="nav-icon fas fa-info-circle"></i>
+              <p>
+                حولنا
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{% url 'login' %}" class="nav-link">
+              <i class="nav-icon fas fa-user-lock"></i>
+              <p>
+                الدخول
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-list"></i>
+              <p>
+                التبرع بالدم
+                <i class="fas fa-angle-left right"></i>
+                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+                  <li style="cursor: pointer;" class="nav-item">
+                    <a id="" class="nav-link" href="{% url 'donneur' %}">
+                      <i class="fas fa-plus text-success nav-icon"></i>
+                      <p>متبرع جديد</p>
+                    </a>
+                  </li>
+ 
+                  <li style="cursor: pointer;" class="nav-item">
+                    <a id="" class="nav-link" href="">
+                      <i class=" far fa-circle text-warning nav-icon"></i>
+                      <p>تبرعت من قبل </p>
+                    </a>
+                  </li>
+
+
+
+        
+
+            </ul>
+          </li>
+
+          
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>

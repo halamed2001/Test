@@ -1,0 +1,20 @@
+{% extends 'parts/base.html' %}
+{% block content %}
+
+
+<div id="inner-wrapper">
+       <div id="header">
+              <span class="logo2"><h2>إمد꒦د</h2></span>
+              <h1><span><center><strong>﴿ وَمَنْ أَحْيَاهَا فَكَأَنَّمَا أَحْيَا النَّاسَ جَمِيعاً ﴾ </strong></center> </span></h1>
+            </div><br>
+<div class="container">
+       <div class="content">  
+         <a href="{% url 'search' %}" role="button" class="btn btn-primary btn-lg" >البحث عن متبرع</a></button>
+         <a href="{% url 'donneur' %}" role="button" class="btn btn-success btn-lg" >متبرع بالدم</a></button><br><br>
+        <a href="{% url 'detail' %}" role="button" class="btn btn-info" >اقرأ عن شروط وفوائد التبرع بالدم</a>
+       </div>
+</div>
+</div>
+{% endblock  %}
+
+

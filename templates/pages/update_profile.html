@@ -1,0 +1,29 @@
+{% extends 'parts/base.html' %}{% load static %}{% block content %}
+
+<div  class="content-wrapper">
+    <div class="content">
+      <div class="container-fluid">
+        <div class="card shadow">
+          <div class="card-header border-0">
+            <div class="d-flex justify-content-between">
+                <h4 class="card-title"><b>تحديث تفاصيل الحساب</b></h4>                  
+            </div>
+          </div>
+          <div class="card-body">
+         <form  method="POST" action="">
+            {% csrf_token %}
+            {% include 'pages/form.html' %}
+                 <button class="btn btn-sm rounded-0 btn-primary col-4">
+                             تعديل
+                     </button>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+{% endblock content %}

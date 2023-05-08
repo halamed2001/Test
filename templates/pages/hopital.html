@@ -1,0 +1,28 @@
+{% extends 'parts/base.html' %}
+{% block content %}
+
+<div  class="content-wrapper">
+  <div class="content">
+    <div class="container-fluid">
+      <div class="card">
+        <div class="card-header border-0">
+          <div class="d-flex justify-content-between">
+            <h1 class="card-title"> تسعدنا زيارتكم لموقعنا</h1>                    
+          </div>
+        </div>
+        <div class="card-body">
+  {%if form.is_valid %}
+  <div class="alert alert-success" role="alert">
+    <p>{{msg}}</p></div>
+   {%endif%} 
+<form method="POst" novalidate>
+    {% csrf_token %}
+    {% include 'pages/form.html' %} 
+    <button class="btn btn-success">سجل الان😊</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock content %}
