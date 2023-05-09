@@ -11,9 +11,9 @@ urlpatterns = [
     path('login', views.login, name='login'),
     path('contact', views.contact, name='contact'),
     path('detail', views.detail, name='detail'),
-    path('profile', views.profile, name='profile'),
-    path('update_profile', views.update_profile, name='update_profile'),
-    path('update_password', views.update_password, name='update_password'),
-    path('rendez_vous', views.rendez_vous, name='rendez_vous'),
+    path('profile/<int:donneur_id>', views.profile, name='profile'),
+    path('profile/<int:donneur_id>/edit', views.update_profile, name='update_profile'),
+    path('profile/<int:donneur_id>/change_password', views.update_password, name='update_password'),
+    path('donneur/<int:donneur_id>/rendez_vous', views.rendez_vous, name='rendez_vous'),
 
 ]

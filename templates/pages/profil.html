@@ -7,11 +7,12 @@
       <div class="container-fluid">
         <div class="card shadow rounded-0">
                 <div class="card-header">
+                   
+        
                     <div class="h4 card-title fw-bold">صفحتي السخصية</div>
                 </div>
                 <div class="card-body">
                                <dl>
-                                    
                                     <dt >الاسم</dt>
                                     <dd >{{ donneur.nom }}</dd>
                                     <dt >الهاتف</dt>
@@ -20,19 +21,17 @@
                                     <dd >{{ donneur.groupeSanguin }}</dd>
                                     <dt >تاريخ اخر تبرع</dt>
                                     <dd >{{ donneur.date_Dernier_Don }}</dd>
-                                    <dt >الجنس</dt>
-                                    <dd >{{ donneur.gender }}</dd>
                                     <dt >الولاية</dt>
                                     <dd >{{ donneur.wilaya }}</dd>
-                                   
+            
                                 </dl>
                             </div>
                         </div>
                 <div class="card-footer">
                     <div class="d-flex w-100 text-end justify-content-end">
-                        <a href="{% url 'update_password' %}" class="btn btn btn-light border btn-sm bg-gradient rounded-0 me-2">تغيير كلمةالسر</a>
-                        <a href="{% url 'update_profile' %}" class="btn btn btn-primary btn-sm bg-gradient rounded-0">تعديل الصفحة</a>
-                        <a href="{% url 'rendez_vous' %}" class="btn btn btn-info btn-sm bg-gradient rounded-0"> احجز موعد </a>
+                        <a href="{% url 'update_password' donneur_id=donneur.id%}" class="btn btn btn-light border btn-sm bg-gradient rounded-0 me-2">تغيير كلمةالسر</a>
+                        <a href="{% url 'update_profile' donneur_id=donneur.id %}" class="btn btn btn-primary btn-sm bg-gradient rounded-0">تعديل الصفحة</a>
+                        <a href="{% url 'rendez_vous' donneur_id=donneur.id %}" class="btn btn btn-info btn-sm bg-gradient rounded-0"> احجز موعد </a>
                     </div>
                 </div>
             </div>

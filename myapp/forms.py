@@ -9,14 +9,13 @@ from .models import Donneur, Hopital, Rendez_vous
 class DonneurForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput, help_text='هذا الحقل مطلوب', label='كلمة السر')
     tel = PhoneNumberField(help_text='هذا الحقل مطلوب', label='رقم الهاتف', widget=PhoneNumberPrefixWidget, region='MR')
-    def clean_password(self):
-        password = self.cleaned_data['password']
-        hashed_password = hashlib.md5(password.encode()).hexdigest()
-        return hashed_password
     
     class Meta:
         model = Donneur
-        fields = ('nom', 'tel', 'password', 'groupeSanguin', 'wilaya')
+        fields = ('nom', 'tel', 'password', 'groupeSanguin', 'wilaya', 'date_Dernier_Don')
+        widgets = {
+            'date_Dernier_Don':forms.DateInput(attrs={'type':'date'}),
+        }
 
 
 
@@ -24,6 +23,9 @@ class Tbr3jdid (forms.ModelForm):
     class Meta:
         model = Donneur
         fields = ('nom', 'date_Dernier_Don', 'wilaya')
+        widgets = {
+            'date_Dernier_Don':forms.DateInput(attrs={'type':'date'}),
+        }
 
 
 class HopitalForm(forms.ModelForm):
@@ -37,6 +39,10 @@ class RendezVousForm(forms.ModelForm):
    class Meta:
         model = Rendez_vous
         fields = '__all__'
+        widgets = {
+            'date':forms.DateInput(attrs={'type':'date'}),
+            'time':forms.TimeInput(attrs={'type':'time'})
+        }
 
 class LoginForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput, label='كلمة السر')
@@ -47,21 +53,31 @@ class LoginForm(forms.ModelForm):
 
 class UpdateProfile(forms.ModelForm):
     nom = forms.CharField(max_length=250, label='الاسم')
-    tel = forms.IntegerField( label='الهاتف')
-    groupeSanguin = forms.CharField(max_length=250, label='زمرةالدم')
-    date_Dernier_Don = forms.CharField(max_length=250, label='تاريخ اخر تبرع')
+    tel = PhoneNumberField(label='رقم الهاتف', widget=PhoneNumberPrefixWidget, region='MR')
     
 
     class Meta:
         model = Donneur
-        fields = ('nom', 'tel', 'groupeSanguin', 'date_Dernier_Don')
+        fields = ('nom', 'tel', 'groupeSanguin')
 
 
-class UpdatePasswords(PasswordChangeForm):
-    old_password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control form-control-sm rounded-0 '}), label="كلمة المرور القديمة :")
-    new_password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control form-control-sm rounded-0'}), label="كلمة المرور الجديدة :")
-    new_password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control form-control-sm rounded-0'}), label="تأكيد كلمة المرور :")
+class UpdatePasswords(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput(), label="كلمة المرور القديمة :")
+    new_password = forms.CharField(widget=forms.PasswordInput(), label="كلمة المرور الجديدة :")
+    confirm_password = forms.CharField(widget=forms.PasswordInput(), label="تأكيد كلمة المرور :")
     class Meta:
         model = Donneur
-        fields = ('old_password','new_password1', 'new_password2')
+        fields = ('password','new_password', 'confirm_password')
+    def clean(self):
+        cleaned_data = super().clean()
+        new_password = cleaned_data.get('new_password')
+        confirm_password = cleaned_data.get('confirm_password')
+
+        if new_password and confirm_password and new_password != confirm_password:
+            raise forms.ValidationError('كلمات المرور الجديدة لا تتطابق')
+        
+        return cleaned_data
+
+
+
 

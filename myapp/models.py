@@ -1,3 +1,4 @@
+from datetime import datetime, timezone
 from django.db import models
 from django.contrib.auth.hashers import make_password
 from phonenumber_field.modelfields import PhoneNumberField
@@ -34,7 +35,22 @@ class Donneur(models.Model):
         ('انواكشوط', 'انواكشوط')), verbose_name='الولاية', blank=True, null=True)
     def __str__(self):
         return self.nom
+    def check_password(self, password):
+        return self.password == hashlib.md5(password.encode()).hexdigest()
     
+    def peut_don(self):
+        if not self.date_Dernier_Don:
+            return True
+        today = datetime.date.today()
+        last_donation = self.date_Dernier_Don
+        difference = today - last_donation
+        return difference.days >= 120 
+    
+    def dernier_don_accepte(self):
+        if not self.date_Dernier_Don:
+            return False
+        delta = timezone.now().date() - self.date_Dernier_Don
+        return delta.days >= 120
    
     
     class Meta:
