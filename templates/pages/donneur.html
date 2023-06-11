@@ -1,32 +1,29 @@
 {% extends 'parts/base.html' %}
 {% load static %}
  {% block content %}
- <div class="d-flex flex-column w-100 justify-content-center align-items-center">
- <div class="col-md-9">
- <div  class="content-wrapper">
-    <div class="content">
-      <div class="container-fluid">
-        <div class="card shadow">
-          <div class="card-header border-0">
-            <div class="d-flex justify-content-between">
-                <h1 class="card-title"><b>إضافة متبرع</b></h1>                    
+ 
+<div class="content">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10 col-sm-12">  
+                <div class="card  mt-5">
+                    <div class="card-body">
+                        <div class="card-header border-0">
+                            <h1 class="card-title"><b>إضافة متبرع</b></h1>                    
+                        </div>
+                        <form action="{% url 'donneur' %}" method="POST" novalidate>
+                            {% csrf_token %}
+                            {% include 'pages/form.html' %} 
+                            <button type="submit" class="btn btn-success btn-block">
+                                 سجل الان للتبرع 
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="card-body">
-    {%if form.is_valid %}
-    <div class="alert alert-success" role="alert">
-      <p>{{msg}}</p></div>
-     {%endif%} 
-    <form action="" method="POST" novalidate>
-        {% csrf_token %}
-        {% include 'pages/form.html' %} 
-    <button type="submit" class="btn btn-success">سجل الان😊</button>
-    </form>
+        </div>
+    </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+
+
 {% endblock  %} 

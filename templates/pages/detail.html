@@ -1,11 +1,10 @@
 {% extends 'parts/base.html' %}
 {% block content %}
  
-<div  class="content-wrapper">
-  <div class="content">
-    <div class="container-fluid">
-      <div class="card shadow">
-        <div class="card-body">
+  <div class="content"> 
+    <div class="card shadow mt-5">
+      <div class="card-body">
+          <div class="container-fluid">
    <h2>شروط التبرع</h2>
    <h3>ما يفترض بالمتبرع القيام به قبل عملية التبرع:</h3>
    <ul>
@@ -84,8 +83,8 @@
    </ul>
    <a href="{% url 'donneur' %}">سجل الان لتصبح متبرع بالدم</a>
 
-
- </div>
+  </div>
+</div>
 </div>
 </div>
  {% endblock content %}

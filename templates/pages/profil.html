@@ -1,41 +1,36 @@
 {% extends 'parts/base.html' %} 
-{% load static %}
 {% block content%}
 
-<div  class="content-wrapper">
-    <div class="content">
-      <div class="container-fluid">
-        <div class="card shadow rounded-0">
-                <div class="card-header">
-                   
-        
-                    <div class="h4 card-title fw-bold">صفحتي السخصية</div>
-                </div>
-                <div class="card-body">
-                               <dl>
-                                    <dt >الاسم</dt>
-                                    <dd >{{ donneur.nom }}</dd>
-                                    <dt >الهاتف</dt>
-                                    <dd >{{ donneur.tel }}</dd>
-                                    <dt >فصيلة الدم</dt>
-                                    <dd >{{ donneur.groupeSanguin }}</dd>
-                                    <dt >تاريخ اخر تبرع</dt>
-                                    <dd >{{ donneur.date_Dernier_Don }}</dd>
-                                    <dt >الولاية</dt>
-                                    <dd >{{ donneur.wilaya }}</dd>
-            
-                                </dl>
-                            </div>
+<div class="content">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10 col-sm-12">
+                <div class="card  mt-5">
+                    <div class="card-body">
+                        <div class="card-header">
+                            <div class="card-title">صفحتي السخصية</div>
                         </div>
-                <div class="card-footer">
-                    <div class="d-flex w-100 text-end justify-content-end">
-                        <a href="{% url 'update_password' donneur_id=donneur.id%}" class="btn btn btn-light border btn-sm bg-gradient rounded-0 me-2">تغيير كلمةالسر</a>
-                        <a href="{% url 'update_profile' donneur_id=donneur.id %}" class="btn btn btn-primary btn-sm bg-gradient rounded-0">تعديل الصفحة</a>
-                        <a href="{% url 'rendez_vous' donneur_id=donneur.id %}" class="btn btn btn-info btn-sm bg-gradient rounded-0"> احجز موعد </a>
+                            <dl>
+                            <dt >الاسم</dt>
+                            <dd >{{ donneur.nom }}</dd>
+                            <dt >الهاتف</dt>
+                            <dd >{{ donneur.tel }}</dd>
+                            <dt >فصيلة الدم</dt>
+                            <dd >{{ donneur.groupeSanguin }}</dd>
+                            <dt >تاريخ اخر تبرع</dt>
+                            <dd >{{ donneur.date_Dernier_Don }}</dd>
+                            <dt >الولاية</dt>
+                            <dd >{{ donneur.wilaya }}</dd>
+                        </dl>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{% url 'update_password' donneur_id=donneur.id%}" class="btn btn-light ">تغيير كلمةالسر</a>
+                        <a href="{% url 'update_profile' donneur_id=donneur.id %}" class="btn btn-primary">تعديل الصفحة</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 {% endblock content%}

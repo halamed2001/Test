@@ -1,46 +1,42 @@
 {% extends 'parts/base.html' %} {% load static %}
 {% block content %}
-<div  class="content-wrapper">
-  <div class="content">
-    <div class="container-fluid">
-      <div class="card">
-        <div class="card-header border-0">
+<div class="content">
+  <div class="container-fluid">
+      <div class="card shadow mt-5">
+        <div class="card-header">
           <div class="d-flex justify-content-between">
             <h1 class="card-title">نتائج البحث</h1>                    
           </div>
         </div>
         <div class="card-body">
-<table class="table">
-  <thead>
-    <tr>
-      <th>الاسم</th>
-      <th>الهاتف</th>
-      <th>الزمرة</th>
-      <th>الولاية</th>
-      <th>تالريخ اخر تبرع</th>
-    </tr>
-  </thead>
-  <tbody>
-    {%for  donneur in donneur%}
-    <tr>
-      <td >{{donneur.nom}}</td>
-      <td>{{donneur.tel}}</td>
-      <td>{{donneur.groupeSanguin}}</td>
-      <td>{{donneur.wilaya}}</td>
-      <td>{{donneur.date_Dernier_Don}}</td>  
-    </tr>
-    {%empty%}
-    لا توجد نتائج 
-    {%endfor%}
-  </tbody>
-</table>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>الاسم</th>
+                  <th>الهاتف</th>
+                  <th>الزمرة</th>
+                  <th>الولاية</th>
+                  <th>تالريخ اخر تبرع</th>
+                </tr>
+              </thead>
+              <tbody>
+                {%for  donneur in donneur%}
+                <tr>
+                  <td >{{donneur.nom}}</td>
+                  <td>{{donneur.tel}}</td>
+                  <td>{{donneur.groupeSanguin}}</td>
+                  <td>{{donneur.wilaya}}</td>
+                  <td>{{donneur.date_Dernier_Don}}</td>  
+                </tr>
+                {%empty%}
+                لا توجد نتائج 
+                {%endfor%}
+              </tbody>
+            </table>
+        </div>
+      </div>
+  </div>
+</div>
 
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
 
 {% endblock %}

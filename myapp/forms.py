@@ -4,11 +4,11 @@ from django import forms
 from phonenumber_field.formfields import PhoneNumberField
 from phonenumber_field.widgets import PhoneNumberPrefixWidget
 from django.contrib.auth.forms import PasswordChangeForm
-from .models import Donneur, Hopital, Rendez_vous
+from .models import Donneur, ISC, Rendez_vous, Topic
 
 class DonneurForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput, help_text='هذا الحقل مطلوب', label='كلمة السر')
-    tel = PhoneNumberField(help_text='هذا الحقل مطلوب', label='رقم الهاتف', widget=PhoneNumberPrefixWidget, region='MR')
+    tel = PhoneNumberField(help_text='هذا الحقل مطلوب', label='رقم الهاتف', widget=PhoneNumberPrefixWidget)
     
     class Meta:
         model = Donneur
@@ -28,10 +28,11 @@ class Tbr3jdid (forms.ModelForm):
         }
 
 
-class HopitalForm(forms.ModelForm):
+class ISCForm(forms.ModelForm):
    password = forms.CharField(widget=forms.PasswordInput, label='كلمة السر')
+   phone = PhoneNumberField(label='رقم الهاتف', widget=PhoneNumberPrefixWidget)
    class Meta:
-        model = Hopital
+        model = ISC
         fields = '__all__'
         
 
@@ -79,5 +80,24 @@ class UpdatePasswords(forms.ModelForm):
         return cleaned_data
 
 
+class TopicForm(forms.ModelForm):
+    
+    class Meta:
+        model = Topic
+        fields = "__all__"
+        
 
+class LoginISC(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput, label='كلمة السر')
+    class Meta:
+        model = ISC
+        fields = ('email','password')  
+
+
+
+
+class ContactForm(forms.Form):
+    nom = forms.CharField(max_length=50)
+    email = forms.EmailField()
+    message = forms.CharField(widget=forms.Textarea)
 

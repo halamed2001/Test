@@ -1,5 +1,6 @@
 {% extends 'parts/base.html' %}
 {% block content %}
+<!--
 <div class="d-flex flex-column w-100 justify-content-center align-items-center">
 <div class="col-md-10 ">
 <div  class="content-wrapper">
@@ -22,9 +23,49 @@
     </div>
   </div>
 </div>
-</div>
-</div>
-</div>
+</div>-->
+
+<div class="contac">
+  <div class="cont">
+    <div class="right-side">
+      <div class="details">
+        <i class="fas fa-map-marker-alt"></i>
+        <div class="topic"> العنوان </div>
+        <div class="text-one">انواكشوط</div>
+        <div class="text-two">موريتانيا</div>
+      </div>
+      <div class="details">
+        <i class="fas fa-phone"></i>
+        <div class="topic">الهاتف</div>
+        <div class="text-one">+22227485493</div>
+        <div class="text-two">+22246580199</div>
+      </div>
+      <div class="details">
+        <i class="fas fa-envelope"></i>
+        <div class="topic">الإيميل</div>
+        <div class="text-one">imdad01@gmail.com</div>
+        <div class="text-two">halamed2001@gmail.com</div>
+      </div>
+    </div>
+    <div class="left-side">
+      <div class="topic-text">ارسل رسالة</div>
+      <p>  للإستفسار أو الحصول على المزيد من المعلومات  يمكنكم مراسلتنا من هنا </p>
+      <form method="post">
+        {% csrf_token %}
+        <div class="input-box">
+          <input type="text" placeholder=" أكتب العنوان " name="subject">
+        </div>
+        <div class="input-box">
+          <input type="text" placeholder="  أدخل إيميلك " name="email">
+        </div>
+        <div class="input-box message-box">
+          <textarea name="message"></textarea>
+        </div>
+        <div class="buttom">
+          <input type="submit" value="إرسال">
+      </form>
+    </div>
+  </div>
 </div>
 
 {% endblock content %}

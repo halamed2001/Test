@@ -8,7 +8,7 @@ import hashlib
 
 class Donneur(models.Model):
     nom = models.CharField( max_length=50, default='فاعل خير', verbose_name='الاسم', blank=True, null=True)
-    tel = PhoneNumberField(verbose_name='الهاتف',region = 'MR')
+    tel = PhoneNumberField(verbose_name='الهاتف')
     password = models.CharField(max_length=10, verbose_name='كلمةالسر')
     groupeSanguin = models.CharField(max_length=10,  choices=(('لا اعرف', 'لا اعرف'),
         ('O-', 'O-'),
@@ -18,7 +18,7 @@ class Donneur(models.Model):
         ('AB-', 'AB-'),
         ('B+', 'B+'),
         ('AB+', 'AB+'),
-        ('A+', 'A+')), verbose_name='زمرةالدم', blank=True, null=True)
+        ('A+', 'A+')), verbose_name='زمرة الدم', blank=True, null=True)
     date_Dernier_Don = models.DateField(verbose_name='تاريخ اخر تبرع', blank=True, null=True)
     wilaya = models.CharField(max_length=30, choices=((' الحوض الشرقي', 'الحوض الشرقي'),
         ('الحوض الغربي', 'الحوض الغربي'),
@@ -58,21 +58,6 @@ class Donneur(models.Model):
        verbose_name_plural = 'المتبرعون'
 
 
-
-
-class Hopital(models.Model):
-    nom = models.CharField(max_length=20, verbose_name='الاسم')
-    password = models.CharField(max_length=10, verbose_name='كلمة السر')
-    def __str__(self):
-        return self.nom
-    
-    class Meta:
-       verbose_name = 'مستشفى'
-       verbose_name_plural = 'المستشفيات'
-    
-
-
-
 class Rendez_vous(models.Model):
     donneur_id = models.ForeignKey(Donneur, on_delete=models.CASCADE, verbose_name='المتبرع')
     date = models.DateField(verbose_name='التاريخ')
@@ -84,4 +69,34 @@ class Rendez_vous(models.Model):
     
     class Meta:
        verbose_name = 'ميعاد'
-       verbose_name_plural = 'المواعيد'       
+       verbose_name_plural = 'المواعيد'
+
+
+
+class ISC(models.Model):
+    nom = models.CharField(max_length=20, verbose_name='الاسم')
+    phone =PhoneNumberField(verbose_name='الهاتف')
+    email  = models.EmailField(verbose_name='الايميل', max_length=254)
+    password = models.CharField(verbose_name='كلمة السر', max_length=50)
+    description = models.TextField(verbose_name='الوصف')
+    location = models.CharField(max_length=50, verbose_name='الموقع')
+    image = models.ImageField(upload_to='photos/%y/%m/%d', verbose_name='صورة', blank=True, null=True)
+    def __str__(self):
+        return self.nom
+    
+    class Meta:
+       verbose_name = 'مؤسسة صحية و خيرية '
+       verbose_name_plural = '  مؤسسات صحية و خيرية '
+    
+
+class Topic(models.Model):
+    subject = models.CharField(max_length=50, verbose_name='الموضوع')
+    contenu =models.TextField(max_length=300, verbose_name='المضمون')
+    publier_de =models.ForeignKey(ISC, verbose_name="بواسطة", on_delete=models.CASCADE,related_name='topics')
+    created_dt = models.DateTimeField(auto_now_add=True, verbose_name='تاريخ النشر')
+    def __str__(self):
+        return self.subject
+
+    class Meta:
+       verbose_name = 'منشور'
+       verbose_name_plural = ' المنشورات  '

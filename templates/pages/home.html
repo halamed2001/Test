@@ -1,21 +1,22 @@
 {% extends 'parts/base.html' %}
+{% load static %}
 {% block content %}
 
+<div class="container-fluid">
+    <div class="alert  py-5" >
+        <h2 class="h1n" style="font-family: 'Chalkboard', cursive;"> ﴿ وَمَنْ أَحْيَاهَا فَكَأَنَّمَا أَحْيَا النَّاسَ جَمِيعاً ﴾ </h2>
+    </div>
+    <div class="content">
+        <a href="{% url 'donneur' %}" role="button" class="btnn"> متبرع بالدم </a>
+        <a href="{% url 'isc' %}" role="button" class="btnn"> مؤسسة جديدة </a>
+        <a href="{% url 'new_topic' %}" role="button" class="btnn"> منشور جديد </a>
+    </div>
+    <p class="py-5 h2n">  عدد المتبرعين : {{count}} </p>
+    <div class="content">
+        <a href="{% url 'detail' %}" role="button" class="bnt"> اقرأ عن شروط وفوائد التبرع بالدم </a>
+    </div>
+</div>
 
-<div id="inner-wrapper">
-       <div id="header">
-              <span class="logo2"><h2>إمد꒦د</h2></span>
-              <h1><span><center><strong>﴿ وَمَنْ أَحْيَاهَا فَكَأَنَّمَا أَحْيَا النَّاسَ جَمِيعاً ﴾ </strong></center> </span></h1>
-            </div><br>
-<div class="container">
-       <div class="content">  
-         <a href="{% url 'search' %}" role="button" class="btn btn-primary btn-lg" >البحث عن متبرع</a></button>
-         <a href="{% url 'donneur' %}" role="button" class="btn btn-success btn-lg" >متبرع بالدم</a></button><br><br>
-         <p class="h3" style="font-familly:">  عدد التبرعين : {{count}} </p><br>
-        <a href="{% url 'detail' %}" role="button" class="btn btn-info" >اقرأ عن شروط وفوائد التبرع بالدم</a>
-       </div>
-</div>
-</div>
 {% endblock  %}
 
 

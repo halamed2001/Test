@@ -1,0 +1,38 @@
+{% extends 'parts/base.html' %} {% load static %}
+{% block content %}
+
+<div class="container-fluid">             
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-sm-12">  
+            <div class="card  mt-5">
+                <div class="card-header">
+                    <div class="col-3">
+                        <img src="{{isc.image.url}}"  class="w-50 img-circle">
+                    </div><br>
+                    <div class="text-left" style="">
+                        <h6> الاسم: {{isc.nom}} </h6>
+                        
+                    </div>
+                </div>
+                <div class="card-body">
+                <div class="col-10">
+                    <div class=" mb-3">
+                        <div class="col-10">
+                           
+                            <p> الوصف : {{isc.description}}</p>
+                            <p><i class="fas fa-phone"></i> : {{isc.phone}}</p>
+                            <p><i class="fas fa-envelope"></i> : {{isc.email}}</p>
+                            <p> الموقع : {{isc.location}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        
+              
+       
+
+
+{% endblock %}
